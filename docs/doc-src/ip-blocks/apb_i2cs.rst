@@ -781,7 +781,7 @@ FIFO_APB_TO_I2C_WRITE_DATA_PORT
 +----------------------+----------+------------------+------------------+------------+-----------------------------+
 | Field                | Bits     | APB access type  | I2C access type  | Default    | Description                 |
 +======================+==========+==================+==================+============+=============================+
-| I2C_APB_WRITE_DA     | 7:0      | WO               | --               | 0x0        | Not accessible by I2C       |
+| APB_I2C_WRITE_DA     | 7:0      | WO               | --               | 0x0        | Not accessible by I2C       |
 | TA_PORT              |          |                  |                  |            | interface                   |
 |                      |          |                  |                  |            |                             |
 |                      |          |                  |                  |            | The APB master writes to    |
@@ -804,7 +804,7 @@ FIFO_APB_TO_I2C_READ_DATA_PORT
 +----------------------+----------+------------------+------------------+------------+-----------------------------+
 | Field                | Bits     | APB access type  | I2C access type  | Default    | Description                 |
 +======================+==========+==================+==================+============+=============================+
-| I2C_APB_READ_DA      | 7:0      | --               | RO               | 0x0        | Not accessible by APB       |
+| APB_I2C_READ_DA      | 7:0      | --               | RO               | 0x0        | Not accessible by APB       |
 | TA_PORT              |          |                  |                  |            | interface                   |
 |                      |          |                  |                  |            |                             |
 |                      |          |                  |                  |            | The I2C master reads from   |
@@ -1206,49 +1206,49 @@ INTERRUPT_FIFO_APB_TO_I2C_WRITE_FLAGS_SELECT
 +----------------------+----------+------------------+------------------+------------+----------------------------+
 | Field                | Bits     | APB access type  | I2C access type  | Default    | Description                |
 +======================+==========+==================+==================+============+============================+
-| WRITE_FLAG_FULL      | 7:7      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FLAG_FULL      | 7:7      | RW               | RO               | 0x0        | If this bit is set, then   |
 |                      |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the APB to I2C FIFO   |
 |                      |          |                  |                  |            | is full, given that the    |
 |                      |          |                  |                  |            | write flags interrupt is   |
 |                      |          |                  |                  |            | enabled.                   |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| WRITE_FL             | 6:6      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FL             | 6:6      | RW               | RO               | 0x0        | If this bit is set, then   |
 | AG_1_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there is 1 space      |
 |                      |          |                  |                  |            | available in the APB to I2C|
 |                      |          |                  |                  |            | FIFO, given that the write |
 |                      |          |                  |                  |            | flags interrupt is enabled.|
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| WRITE_FLAG           | 5:5      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FLAG           | 5:5      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _2_3_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there are 2-3 spaces  |
 |                      |          |                  |                  |            | available in the APB to I2C|
 |                      |          |                  |                  |            | FIFO, given that the write |
 |                      |          |                  |                  |            | flags interrupt is enabled.|
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| WRITE_FLAG           | 4:4      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FLAG           | 4:4      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _4_7_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there are 4-7 spaces  |
 |                      |          |                  |                  |            | available in the APB to I2C|
 |                      |          |                  |                  |            | FIFO, given that the write |
 |                      |          |                  |                  |            | flags interrupt is enabled.|
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| WRITE_FLAG           | 3:3      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FLAG           | 3:3      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _8_31_SPACE_AVAIL    |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there are 8-31 spaces |
 |                      |          |                  |                  |            | available in the APB to I2C|
 |                      |          |                  |                  |            | FIFO, given that the write |
 |                      |          |                  |                  |            | flags interrupt is enabled.|
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| WRITE_FLAG_3         | 2:2      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FLAG_3         | 2:2      | RW               | RO               | 0x0        | If this bit is set, then   |
 | 2_63_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there are 32-63 spaces|
 |                      |          |                  |                  |            | available in the APB to I2C|
 |                      |          |                  |                  |            | FIFO, given that the write |
 |                      |          |                  |                  |            | flags interrupt is enabled.|
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| WRITE_FLAG_64        | 1:1      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FLAG_64        | 1:1      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _127_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there are 64-127      |
 |                      |          |                  |                  |            | spaces available in the APB| 
@@ -1256,7 +1256,7 @@ INTERRUPT_FIFO_APB_TO_I2C_WRITE_FLAGS_SELECT
 |                      |          |                  |                  |            | write flags interrupt is   |
 |                      |          |                  |                  |            | enabled.                   |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| WRITE_FLAG_1         | 0:0      | RO               | RW               | 0x0        | If this bit is set, then   |
+| WRITE_FLAG_1         | 0:0      | RW               | RO               | 0x0        | If this bit is set, then   |
 | 28__SPACE_AVAIL      |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there are more than   |
 |                      |          |                  |                  |            | 127 spaces available in the|
@@ -1277,56 +1277,56 @@ INTERRUPT_FIFO_I2C_TO_APB_READ_FLAGS_SELECT
 +----------------------+----------+------------------+------------------+------------+----------------------------+
 | Field                | Bits     | APB access type  | I2C access type  | Default    | Description                |
 +======================+==========+==================+==================+============+============================+
-| READ_FLAG            | 7:7      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FLAG            | 7:7      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _128_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the I2C to APB FIFO   |
 |                      |          |                  |                  |            | has more than 127 items,   |
 |                      |          |                  |                  |            | given that the read flags  |
 |                      |          |                  |                  |            | interrupt is enabled.      |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| READ_FLAG_64         | 6:6      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FLAG_64         | 6:6      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _127_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the I2C to APB FIFO   |
 |                      |          |                  |                  |            | has 64-127 items, given    |
 |                      |          |                  |                  |            | that the read flags        |
 |                      |          |                  |                  |            | interrupt is enabled.      |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| READ_FLAAG_3         | 5:5      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FLAAG_3         | 5:5      | RW               | RO               | 0x0        | If this bit is set, then   |
 | 2_63_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the I2C to APB FIFO   |
 |                      |          |                  |                  |            | has 32-63 items, given that|
 |                      |          |                  |                  |            | the read flags interrupt is|
 |                      |          |                  |                  |            | enabled.                   |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| READ_FLAG_8          | 4:4      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FLAG_8          | 4:4      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _31_SPACE_AVAIL      |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the I2C to APB FIFO   |
 |                      |          |                  |                  |            | has 8-31 items, given that |
 |                      |          |                  |                  |            | the read flags interrupt is|
 |                      |          |                  |                  |            | enabled.                   |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| READ_FLAG            | 3:3      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FLAG            | 3:3      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _4_7_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the I2C to APB FIFO   |
 |                      |          |                  |                  |            | has 4-7 items, given that  |
 |                      |          |                  |                  |            | the read flags interrupt is|
 |                      |          |                  |                  |            | enabled.                   |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| READ_FLAG            | 2:2      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FLAG            | 2:2      | RW               | RO               | 0x0        | If this bit is set, then   |
 | _2_3_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the I2C to APB FIFO   |
 |                      |          |                  |                  |            | has 2-3 items, given that  |
 |                      |          |                  |                  |            | the read flags interrupt is|
 |                      |          |                  |                  |            | enabled.                   |
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| READ_FL              | 1:1      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FL              | 1:1      | RW               | RO               | 0x0        | If this bit is set, then   |
 | AG_1_SPACE_AVAIL     |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when there is 1 item       |
 |                      |          |                  |                  |            | available in the I2C to APB|
 |                      |          |                  |                  |            | FIFO, given that the read  |
 |                      |          |                  |                  |            | flags interrupt is enabled.|
 +----------------------+----------+------------------+------------------+------------+----------------------------+
-| READ_FLAG_EMPTY      | 0:0      | RO               | RW               | 0x0        | If this bit is set, then   |
+| READ_FLAG_EMPTY      | 0:0      | RW               | RO               | 0x0        | If this bit is set, then   |
 |                      |          |                  |                  |            | interrupt will be generated|
 |                      |          |                  |                  |            | when the I2C to APB FIFO   |
 |                      |          |                  |                  |            | is empty, given that the   |
